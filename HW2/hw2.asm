@@ -65,7 +65,7 @@ output:
     la a0 result
     li a7 4
     ecall
-    li  a7, 1 		# ��������� ����� �1 � ������� ���������� �����
+    li  a7, 1 		
     mv  a0, t0
     ecall
     
@@ -76,7 +76,7 @@ output:
     la a0 remainder
     li a7 4
     ecall
-    li  a7, 1 		# ��������� ����� �1 � ������� ���������� �����
+    li  a7, 1 		
     mv  a0, t1
     ecall
     j finish
