@@ -38,12 +38,12 @@ check_sign_divisor:
 change_sign_divisor:
     neg t2 t2
 set_results:
-    blt t2 t1 division_loop
+    ble t2 t1 division_loop
     j check_remainder_sign
 division_loop:
     sub t1 t1 t2
     addi t0 t0 1
-    blt t2 t1 division_loop
+    ble t2 t1 division_loop
 check_remainder_sign:
     bltz t4 set_remainder_sign
     j check_result_sign
