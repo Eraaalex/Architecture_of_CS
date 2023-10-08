@@ -1,16 +1,11 @@
 .include "macrolib.s"
+.include "macros.s"
 .global main
 
 .data
 n: .word 0
 sum: .word 0
 array: .space 40
-
-.macro init_start_values
-       lw t3 n                  # Число элементов массива
-       la t0 array             # указатель на начало массива
-       lw t5 sum
-.end_macro
 
 .text
 main: 
@@ -24,12 +19,11 @@ in:
        la	t4 n		# Adress n in t4
        sw	t3 (t4)		
        la t0 array
-       jal input_array
+       input_array_macro t0 t3
        init_start_values
-	jal output_array
+       output_array_macro t0 t3
        init_start_values
-       jal sum_counter
-       lw t6 n
+       sum_counter_macro t0 t3 t5
        exit
 error: 
        print_str("incorrect n!\n")

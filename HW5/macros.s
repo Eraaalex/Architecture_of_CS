@@ -1,4 +1,5 @@
-.macro input_array_macro (%base_address), (%array_size)
+
+.macro input_array_macro %base_address, %array_size
     print_str("Input array: \n")
 in: read_int_a0
     mv t2, a0               # Input the next element of the array
@@ -8,16 +9,8 @@ in: read_int_a0
     bnez %array_size, in             # Branch if not zero, continue the loop
     print_str("\n")
 .end_macro
-.text
-input_array:
-    input_array_macro t0, t3  # Assuming array size is 10, adjust it according to your requirement
-    ret
 
-
-----------------------------------------------------------------------------
-
-.text
-.macro output_array_macro (%base_address), (%array_size)
+.macro output_array_macro %base_address, %array_size
     print_str("Output array: \n")
     out: lw a0, (%base_address)   # Load the next element from the array
      print_int(a0)             # Print the element
@@ -28,16 +21,7 @@ input_array:
      print_str("\n")
 .end_macro
 
-.text
-output_array:
-    output_array_macro t0, t3  # Assuming array size is 10, adjust it according to your requirement
-    ret
-
-
-----------------------------------------------------------------------
-
-
-.macro sum_counter_macro (%base_address), (%array_size) %sum_value
+.macro sum_counter_macro %base_address, %array_size %sum_value
     li a4 0
     sum_loop:
         lw a0, 0(%base_address)  # Load the next element from the array
@@ -64,7 +48,7 @@ output_array:
         print_str("Sum = ")
         print_int(%sum_value)
         print_str("\n----------------\n")
-        ret
+        j ex
 
     overflow:
         print_str("Overflow! Last sum = ")
@@ -74,14 +58,12 @@ output_array:
         addi a4, a4, -1
         print_int(a4)
         print_str("\n----------------\n")
-        ret
+ex:
+       
 .end_macro
 
-.text
-sum_counter:
-    sum_counter_macro t0, t3 t5
-    ret
-
-
-
-
+.macro init_start_values
+       lw t3 n                  
+       la t0 array             
+       lw t5 sum
+.end_macro
