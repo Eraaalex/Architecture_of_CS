@@ -12,8 +12,3 @@ out:       lw      a0 (t0)         #
         bnez    t3 out          
        print_str("\n")
     ret
-
-
-
-
-

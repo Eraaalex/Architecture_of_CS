@@ -12,6 +12,3 @@ in:       read_int_a0
        bnez t3 in
        print_str("\n")
        ret
-
-
-
