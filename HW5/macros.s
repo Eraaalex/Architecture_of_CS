@@ -18,6 +18,6 @@
 
 .macro check_size
 	li      a1 10           # Max array size 
-       bltz t3 error           # if size < 1
-       bgt     t3 a1 error      # if size > 10
+        blez    t3 error           # if size < 1
+        bgt     t3 a1 error      # if size > 10
 .end_macro
