@@ -2,6 +2,7 @@
 .globl strcpy
 .data
 error_message: .asciz "!Error: line is too long, but part of string was copied in buffer\n"
+
 .text
 strcpy:
 str_copy:
@@ -19,5 +20,6 @@ end:
     ret
 overflow:
     print_saved_string(error_message)
-    
+    addi    a2 a2 -1		# Previous symbol
+    sb      zero, 0(a2)       # Store the last symbol in the destination string
     ret

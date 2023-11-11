@@ -6,9 +6,11 @@
 
 
 .macro print_saved_string (%string_adress)
+push(a0)
 	la		a0 %string_adress
    	li		a7 4
     	ecall
+pop(a0)
 .end_macro
 
 
