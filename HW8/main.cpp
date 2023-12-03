@@ -11,17 +11,18 @@ struct Package {
     double sum;     // Result
 };
 
-unsigned int arrSize = 100000000;
+//unsigned int arrSize = 100000000;
 //unsigned int arrSize = 500000000;
-//unsigned int arrSize = 900000000;
+unsigned int arrSize = 100000000000;
 
 double *A;  //vector a0...
 double *B;  //vector b0...
 
 //const int threadNumber = 1; // number of threads
 // const int threadNumber = 2;
- const int threadNumber = 4; // number of threads
+// const int threadNumber = 4; // number of threads
 //const int threadNumber = 8;
+const int threadNumber = 1000;
 
 // the starting function for threads
 void *func(void *param) {
@@ -37,11 +38,11 @@ void *func(void *param) {
 int main() {
     double rez = 0.0; //для записи окончательного результата
     std::cout << "Input array size >=100000000\n";
-    std::cin >> arrSize;
-    if (arrSize < 100000000) {
-        std::cout << "Incorrect size of vector (too small) = " << arrSize << "\n";
-        return 1;
-    }
+//    std::cin >> arrSize;
+//    if (arrSize < 100000000) {
+//        std::cout << "Incorrect size of vector (too small) = " << arrSize << "\n";
+//        return 1;
+//    }
     // vector A
     A = new double[arrSize];
     if (A == nullptr) {
@@ -82,11 +83,11 @@ int main() {
 
     clock_t end_time = clock(); // end time
 
-    std::cout << "Sum of squares = " << std::scientific <<
+    std::cout << "Result = " << std::scientific <<
               std::setprecision(std::numeric_limits<double>::digits10 + 1) << rez << "\n";
 
     std::cout << "Number of threads = " << threadNumber << std::endl;
-    std::cout << "Array size = " << arrSize << std::endl;
+    std::cout << "Array size = " << 100000000000 << std::endl;
     std::cout << "Streams have started = " << thread_started_time - start_time << "\n";
     std::cout << "Time = " << end_time - start_time << "\n";
 
