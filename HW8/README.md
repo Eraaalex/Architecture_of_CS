@@ -25,7 +25,7 @@
 ![img.png](images/img_13.png)
 
 Свопинг при 2х потоках на 100000000000 элементах:
-![img.png](/images/img-11.png)
+![img.png](/images/img_1_1.png)
 
 Свопинг при 4 потоках на 100000000000 элементах:
 ![img_1.png](images/img_12.png)
