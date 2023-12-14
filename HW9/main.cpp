@@ -23,10 +23,10 @@ void printBuffer() {
     std::cout << std::endl;
 }
 
-void *sum(void *param) { // Sum two received values
+void *sum(void *args) { // Sum two received values
     ++active_threads;
-    int first = ((int *) param)[0];
-    int second = ((int *) param)[1];
+    int first = ((int *) args)[0];
+    int second = ((int *) args)[1];
     printf("Sum: Values for current sum before delay: %d, %d\n", first, second);
     sleep(rnd() % 4 + 3);
     pthread_mutex_lock(&mutex);
